@@ -11,6 +11,7 @@ let operacao;
 let resultado;
 let textoDisplay = document.createElement("p");
 let textoDisplayOperacoes = document.createElement("p");
+let del = document.querySelector("#deletar");
 
 const addNumber = (ev) => {
   if (finalizou) {
@@ -68,7 +69,15 @@ const calculaResultado = () => {
   zerarValores();
 };
 
+function deletar() {
+  textoDisplay.innerHTML = textoDisplay.innerHTML.substring(
+    0,
+    textoDisplay.innerHTML.length - 1
+  );
+}
+
 operacoes.forEach((op) => op.addEventListener("click", switchOperacao));
 numbers.forEach((number) => number.addEventListener("click", addNumber));
 igual.addEventListener("click", calculaResultado);
+del.addEventListener("click", deletar);
 console.log(numbers);
